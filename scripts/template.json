@@ -1,0 +1,20 @@
+{
+	"date":{
+		"_type": "date"
+	},
+	"country": {
+		"_comment": "Equal probability values",
+		"_type": "list",
+		"list":  ["US", "CZ", "JP", "UK"]
+	},
+	"action" : {
+		"_comment": "Weighted probability values",
+		"_type": "map",
+		"map": {
+			"new": 5,
+			"change": 50,
+			"delete": 1
+		}
+	},
+	"flag": 1
+}

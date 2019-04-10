@@ -1,0 +1,15 @@
+http:
+  listen:
+    addr: 0.0.0.0
+    port: 8080
+    backlog: 2048
+
+websocket:
+  listen:
+    addr: 0.0.0.0
+    port: 8081
+    backlog: 2048
+
+kafka:
+  brokers: 127.0.0.1:9092
+  topic: rt_graph
