@@ -56,8 +56,16 @@ function create_message( template ) {
 				} );
 				r[ k ] = rwc( a );
 			}
+			if ( _.get( v, '_type' ) === 'object' ) {
+				r[ k ] = {};
+				_.forOwn( v, ( v1, k1 ) => {
+					if ( k1 !== '_type' ) {
+						r[ k ][ k1 ] = create_message( v1 );
+					}
+				} );
+			}
 			if ( _.get( v, '_type' ) === 'date' ) {
-				r[k] = new Date().toISOString();
+				r[ k ] = new Date().toISOString();
 			}
 		} else {
 			r[ k ] = v;
@@ -76,11 +84,12 @@ const run = async () => {
 				topic    : config.get( 'kafka:topic' ),
 				messages : [ {
 					key   : `key-${key}`,
-					value : JSON.stringify(create_message( template_data ))
+					value : JSON.stringify( create_message( template_data ) )
 				} ]
 			};
-			producer.send( msg )
-			        .catch( e => console.error( `${e.message}`, e ) );
+			console.dir( msg.messages[ 0 ].value );
+			// producer.send( msg )
+			//         .catch( e => console.error( `${e.message}`, e ) );
 		} else {
 			clearInterval( eventTimer );
 			producer.disconnect();

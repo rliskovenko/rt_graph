@@ -1,20 +1,38 @@
 {
-	"date":{
+	"date":                {
 		"_type": "date"
 	},
-	"country": {
+	"country":             {
 		"_comment": "Equal probability values",
-		"_type": "list",
-		"list":  ["US", "CZ", "JP", "UK"]
+		"_type":    "list",
+		"list":     ["US", "CZ", "JP", "UK"]
 	},
-	"action" : {
+	"action":              {
 		"_comment": "Weighted probability values",
-		"_type": "map",
-		"map": {
-			"new": 5,
+		"_type":    "map",
+		"map":      {
+			"new":    5,
 			"change": 50,
 			"delete": 1
 		}
 	},
-	"flag": 1
+	"recursive_untouched": {
+		"a": {
+			"b": "c"
+		},
+		"d": [1, 2, 3, 4]
+	},
+	"recursive_parsed":    {
+		"_type": "object",
+		"a":     {
+			"date": {
+				"_type": "date"
+			},
+			"b":    {
+				"_type": "list",
+				"list":  ["US", "CZ", "JP", "UK"]
+			}
+		}
+	},
+	"flag":                1
 }
