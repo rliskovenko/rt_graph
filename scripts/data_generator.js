@@ -88,8 +88,8 @@ const run = async () => {
 				} ]
 			};
 			console.dir( msg.messages[ 0 ].value );
-			// producer.send( msg )
-			//         .catch( e => console.error( `${e.message}`, e ) );
+			producer.send( msg )
+			        .catch( e => console.error( `${e.message}`, e ) );
 		} else {
 			clearInterval( eventTimer );
 			producer.disconnect();
